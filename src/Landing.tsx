@@ -1,15 +1,15 @@
 import { Fragment, useState } from "react"
-import { Cordinate } from "./entityTypes";
-import Form from "./Form";
-import RobotForm from "./RobotForm";
+import { Coordinate } from "./entityTypes";
+import GridForm from "./GridForm";
+import RobotLanding from "./RobotLanding";
 
 function Landing() {
-  const [gridCord, setGridCord] = useState<Cordinate>({x: '', y: ''});
+  const [gridCoord, setGridCoord] = useState<Coordinate>({x: '5', y: '3'});
   const [isRobotForm, setIsRobotForm] = useState(false);
 
   return (
     <Fragment>
-      {isRobotForm ? <RobotForm /> : <Form gridCord={gridCord} setGridCord={setGridCord} setIsRobotForm={setIsRobotForm} />}
+      {isRobotForm ? <RobotLanding gridSize={gridCoord} /> : <GridForm gridCoord={gridCoord} setGridCoord={setGridCoord} setIsRobotForm={setIsRobotForm} />}
     </Fragment>
   )
 }
