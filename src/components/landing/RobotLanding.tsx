@@ -1,9 +1,10 @@
-import { Fragment, useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Coordinate, Robot as RobotType } from "../../types/entityTypes";
 import Robots from "../Robots";
 import Container from "../common/Container";
 import RobotForm from "../forms/RobotForm";
 import Button from "../common/Button";
+import { checkWithinBounds } from "../../utils/helpers";
 
 type RobotLandingProps = {
     gridSize: Coordinate;
@@ -18,6 +19,11 @@ function RobotLanding(props: RobotLandingProps) {
         {id: 1, coord: {x: "3", y: "2"}, orientation: "N", path: "FRRFLLFFRRFLL"},
         {id: 2, coord: {x: "0", y: "3"}, orientation: "W", path: "LLFFFLFLFL"}
     ]);
+
+    useEffect(() => {
+        const validRobots: RobotType[] = robots.filter(robot => checkWithinBounds(gridSize, robot.coord)).map(robot => ({...robot, finalDestination: {coord: {x:'', y:''}, orientation: 'N', isLost: false}}));
+        setRobots(validRobots);
+    }, []);
 
     const saveRobot = (robot: RobotType) => {
         const newRobots = [...robots]
