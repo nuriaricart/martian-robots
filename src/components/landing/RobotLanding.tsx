@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { Coordinate, Robot as RobotType } from "./entityTypes";
-import Robots from "./Robots";
-import Container from "./Container";
-import RobotForm from "./RobotForm";
+import { Coordinate, Robot as RobotType } from "../../types/entityTypes";
+import Robots from "../Robots";
+import Container from "../common/Container";
+import RobotForm from "../forms/RobotForm";
 
 type RobotLandingProps = {
     gridSize: Coordinate;

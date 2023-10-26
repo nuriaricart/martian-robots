@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import {Coordinate, OrientationEnumType, Robot as RobotType} from  './entityTypes';
+import {Coordinate, OrientationEnumType, Robot as RobotType} from  '../types/entityTypes';
 
 type RobotProps = {
     robot: RobotType;

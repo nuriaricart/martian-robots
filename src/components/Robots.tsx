@@ -1,8 +1,8 @@
 import { Fragment, useCallback } from "react";
-import { Coordinate, MoveEnumType, Robot as RobotType } from "./entityTypes";
-import Button from "./Button";
+import { Coordinate, MoveEnumType, Robot as RobotType } from "../types/entityTypes";
+import Button from "./common/Button";
 import Robot from "./Robot";
-import { checkWithinBounds, equalRobots, getNextPosition, updateOrientation } from "./helpers";
+import { checkWithinBounds, equalRobots, getNextPosition, updateOrientation } from "../utils/helpers";
 
 type RobotsProps = {
     robots: RobotType[];

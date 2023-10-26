@@ -1,5 +1,5 @@
 import c from "classnames";
-import { OrientationEnumType } from "./entityTypes";
+import { OrientationEnumType } from "../../types/entityTypes";
 
 type InputWrapperProps = {
     labelText: string;

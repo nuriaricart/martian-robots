@@ -1,8 +1,8 @@
 import { useCallback, useState } from "react";
-import { Coordinate } from "./entityTypes";
-import InputWrapper from "./InputWrapper";
-import Button from "./Button";
-import Container from "./Container";
+import { Coordinate } from "../../types/entityTypes";
+import InputWrapper from "../common/InputWrapper";
+import Button from "../common/Button";
+import Container from "../common/Container";
 
 type FormProps = {
     gridCoord: Coordinate;

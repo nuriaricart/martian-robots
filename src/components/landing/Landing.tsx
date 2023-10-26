@@ -1,6 +1,6 @@
 import { Fragment, useState } from "react"
-import { Coordinate } from "./entityTypes";
-import GridForm from "./GridForm";
+import { Coordinate } from "../../types/entityTypes";
+import GridForm from "../forms/GridForm";
 import RobotLanding from "./RobotLanding";
 
 function Landing() {

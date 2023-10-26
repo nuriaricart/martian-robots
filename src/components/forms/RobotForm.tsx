@@ -1,8 +1,8 @@
 import { useCallback, useState } from "react";
-import InputWrapper from "./InputWrapper";
-import { Coordinate, OrientationEnum, OrientationEnumType, Robot } from "./entityTypes";
-import Button from "./Button";
-import { isValidRobot } from "./helpers";
+import InputWrapper from "../common/InputWrapper";
+import { Coordinate, OrientationEnum, OrientationEnumType, Robot } from "../../types/entityTypes";
+import Button from "../common/Button";
+import { isValidRobot } from "../../utils/helpers";
 
 type RobotFormProps = {
     saveRobot: (robot: Robot) => void;

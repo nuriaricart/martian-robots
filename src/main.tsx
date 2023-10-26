@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import Landing from './Landing.tsx'
+import Landing from './components/landing/Landing.tsx'
 import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(

@@ -1,4 +1,4 @@
-import { Coordinate, MoveEnumType, OrientationEnum, OrientationEnumType, Robot } from "./entityTypes";
+import { Coordinate, MoveEnumType, OrientationEnum, OrientationEnumType, Robot } from "../types/entityTypes";
 
 export function getNextPosition(robot: Robot): Coordinate {
     const robotCoord = robot.coord;
