@@ -1,13 +1,31 @@
-export enum OrientationEnum {N, E, S, W};
+export enum OrientationEnum {
+    "N",
+    "E",
+    "S",
+    "W"
+};
 export type OrientationEnumType = keyof typeof OrientationEnum;
 
-export type Cordinate = {
+export enum MoveEnum {
+    L,
+    R,
+    F
+}
+export type MoveEnumType = keyof typeof MoveEnum;
+
+export type Coordinate = {
     x: string;
     y: string;
 }
 
 export type Robot = {
-    cord: Cordinate;
-    orientation?: OrientationEnumType;
-    path?: string;
+    id: number;
+    coord: Coordinate;
+    orientation: OrientationEnumType;
+    path: string;
+    finalDestination?: {
+        coord: Coordinate,
+        orientation: OrientationEnumType,
+        isLost: boolean
+    }
 }
