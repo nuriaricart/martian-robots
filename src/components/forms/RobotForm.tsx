@@ -74,7 +74,7 @@ function RobotForm(props: RobotFormProps) {
             <InputWrapper type="number" labelText={"Start Y"} value={robot.coord.y} keyValue="y" setValue={setCoord} classNames={{labelWrapperClassName: "items-center", labelClassName:"flex-1", inputClassName:"flex-[2]" }} />
             <OrientationInput setProp={setProp} orientation={robot.orientation} />
             <InputWrapper type="text" labelText={"Robot Path"} value={robot.path} keyValue="path" setValue={setProp} classNames={{labelWrapperClassName: "items-center", labelClassName:"flex-1", inputClassName:"flex-[2]" }} />
-            <Button label="Save your Robot" className="mt-auto" onClick={() => {saveRobot(robot)}} disabled={!isValidRobotCallback()} />
+            <Button label="Save your Robot" className="self-center mt-auto" onClick={() => {saveRobot(robot)}} disabled={!isValidRobotCallback()} />
         </div>
     );
 }

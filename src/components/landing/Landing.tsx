@@ -9,7 +9,7 @@ function Landing() {
 
   return (
     <Fragment>
-      {isRobotForm ? <RobotLanding gridSize={gridCoord} /> : <GridForm gridCoord={gridCoord} setGridCoord={setGridCoord} setIsRobotForm={setIsRobotForm} />}
+      {isRobotForm ? <RobotLanding gridSize={gridCoord} setIsRobotForm={setIsRobotForm} /> : <GridForm gridCoord={gridCoord} setGridCoord={setGridCoord} setIsRobotForm={setIsRobotForm} />}
     </Fragment>
   )
 }

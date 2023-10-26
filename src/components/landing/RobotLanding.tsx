@@ -1,15 +1,17 @@
-import { useState } from "react";
+import { Fragment, useCallback, useState } from "react";
 import { Coordinate, Robot as RobotType } from "../../types/entityTypes";
 import Robots from "../Robots";
 import Container from "../common/Container";
 import RobotForm from "../forms/RobotForm";
+import Button from "../common/Button";
 
 type RobotLandingProps = {
     gridSize: Coordinate;
+    setIsRobotForm: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 function RobotLanding(props: RobotLandingProps) {
-    const {gridSize} = props;
+    const {gridSize, setIsRobotForm} = props;
 
     const [robots, setRobots] = useState<RobotType[]>([
         {id: 0, coord: {x: "1", y: "1"}, orientation: "E", path: "RFRFRFRF"},
@@ -23,8 +25,11 @@ function RobotLanding(props: RobotLandingProps) {
         setRobots(newRobots);
     };
 
+    const goBack = useCallback(() => {setIsRobotForm(false)}, [setIsRobotForm]);
+
     return (
-        <Container className="items-center">
+        <Container className="flex-col">
+            <Button label="Go back" onClick={goBack} className="self-start min-w-[150px]" />
             <div className="max-h-[65%] flex flex-col md:flex-row gap-8 w-full h-full">
                 <RobotForm saveRobot={saveRobot} gridSize={gridSize} />
                 <Robots robots={robots} setRobots={setRobots} gridSize={gridSize} />
