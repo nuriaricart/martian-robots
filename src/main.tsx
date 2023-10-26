@@ -1,10 +1,10 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import Landing from './components/landing/Landing.tsx'
-import './index.css'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import Landing from "./components/landing/Landing.tsx";
+import "./index.css";
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
+ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <Landing />
-  </React.StrictMode>,
-)
+  </React.StrictMode>
+);
