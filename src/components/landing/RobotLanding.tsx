@@ -34,8 +34,11 @@ function RobotLanding(props: RobotLandingProps) {
     const goBack = useCallback(() => {setIsRobotForm(false)}, [setIsRobotForm]);
 
     return (
-        <Container className="flex-col">
-            <Button label="Go back" onClick={goBack} className="self-start min-w-[150px]" />
+        <Container className="flex-col justify-center">
+            <div className="w-full flex items-center gap-8">
+                <Button label="Go back" onClick={goBack} className="self-start min-w-[150px]" />
+                <div className="justify-center">Size of Mars | X: {gridSize.x} Y: {gridSize.y}</div>
+            </div>
             <div className="max-h-[65%] flex flex-col md:flex-row gap-8 w-full h-full">
                 <RobotForm saveRobot={saveRobot} gridSize={gridSize} />
                 <Robots robots={robots} setRobots={setRobots} gridSize={gridSize} />

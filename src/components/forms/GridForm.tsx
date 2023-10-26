@@ -28,8 +28,8 @@ function GridForm(props: FormProps) {
     return (
         <Container className="justify-center">
             <div className="flex flex-col gap-4 items-center">
-                <h1 className="font-bold">What's the dimension of your Mars grid?</h1>
-                <div className="flex gap-8">
+                <h1 className="font-bold text-center">What's the dimension of your Mars grid?</h1>
+                <div className="flex flex-col sm:flex-row gap-8">
                     <InputWrapper 
                         labelText="Horizontal Coordinate" 
                         value={gridCoord.x} 
