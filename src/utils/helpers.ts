@@ -40,7 +40,16 @@ export function updateOrientation(
   currentOrientation: OrientationEnumType,
   move: MoveEnumType
 ): OrientationEnumType {
-  const newOrientation = move == "R" ? OrientationEnum[currentOrientation] + 1 : OrientationEnum[currentOrientation] - 1;
+  let newOrientation;
+  switch(move) {
+    case "R": 
+      newOrientation = OrientationEnum[currentOrientation] + 1;
+      break;
+    default:
+      newOrientation = OrientationEnum[currentOrientation] - 1;
+      break;
+
+  }
   const enumLength = Object.keys(OrientationEnum).length / 2;
   const newOrientationIndex = ((newOrientation % enumLength) + enumLength) % enumLength;
   return Object.keys(OrientationEnum).find(
@@ -78,4 +87,8 @@ export function isValidPath(path: string): boolean {
       .split("")
       .filter((move) => !(move in MoveEnum)).length == 0
   );
+}
+
+export function isValidGrid (coord: Coordinate): boolean {
+  return Number(coord.x) >= 0 && Number(coord.y) >= 0;
 }

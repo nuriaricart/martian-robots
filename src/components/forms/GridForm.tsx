@@ -3,6 +3,7 @@ import { Coordinate } from "../../types/entityTypes";
 import InputWrapper from "../common/InputWrapper";
 import Button from "../common/Button";
 import Container from "../common/Container";
+import { isValidGrid } from "../../utils/helpers";
 
 type FormProps = {
   gridCoord: Coordinate;
@@ -43,7 +44,7 @@ function GridForm(props: FormProps) {
   }, [setIsRobotForm]);
 
   const isValidForm = useCallback(() => {
-    return Number(gridCoord.x) >= 0 && Number(gridCoord.y) >= 0;
+    return isValidGrid(gridCoord);
   }, [gridCoord]);
 
   return (

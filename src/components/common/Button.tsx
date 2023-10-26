@@ -28,7 +28,7 @@ function Button(props: ButtonProps) {
         classNames?.buttonWrapperClassName,
         {
           "bg-white hover:bg-brand-brown-300 hover:text-white": isPrimaryButton,
-          "bg-brand-red-300 text-white hover:bg-white hover:text-black":
+          "bg-brand-red-400 text-white hover:bg-white hover:text-black":
             !isPrimaryButton,
         }
       )}

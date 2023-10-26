@@ -61,9 +61,9 @@ function RobotLanding(props: RobotLandingProps) {
             <ArrowIcon className="rotate-180" />
           </Button>
         </div>
-        <div className="text-2xl font-bold text-brand-brown-400 justify-center text-center md:text-left md:w-3/5">
+        <h1 className="text-2xl font-bold text-brand-brown-400 justify-center text-center md:text-left md:w-3/5">
           Size of Mars | X: {gridSize.x} Y: {gridSize.y}
-        </div>
+        </h1>
       </div>
       <div className="max-h-[65%] flex flex-col md:flex-row gap-8 w-full h-full">
         <RobotForm saveRobot={saveRobot} gridSize={gridSize} />

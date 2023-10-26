@@ -16,7 +16,8 @@ export default {
         },
         'brand-red': {
           200: '#d9b1b1',
-          300: '#b57777'
+          300: '#b57777',
+          400: '#7C4646'
         },
         'brand-green': {
           200: '#9ad39a'

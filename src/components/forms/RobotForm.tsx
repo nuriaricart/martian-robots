@@ -22,7 +22,7 @@ const OrientationInput = (props: {
   return (
     <div className="flex gap-2">
       <div className="flex-1 font-bold text-brand-brown-400">Orientation</div>
-      <div className="flex justify-between flex-[2]">
+      <fieldset className="flex justify-between flex-[2]">
         {Object.keys(OrientationEnum).map(
           (_orientation, index) =>
             OrientationEnum[index] && (
@@ -42,14 +42,14 @@ const OrientationInput = (props: {
               />
             )
         )}
-      </div>
+      </fieldset>
     </div>
   );
 };
 
 function RobotForm(props: RobotFormProps) {
   const { saveRobot, gridSize } = props;
-  const [robot, setRobot] = useState<Robot>({
+  const defaultRobot: Robot = {
     id: 0,
     coord: {
       x: "",
@@ -57,7 +57,8 @@ function RobotForm(props: RobotFormProps) {
     },
     orientation: "N",
     path: "",
-  });
+  };
+  const [robot, setRobot] = useState<Robot>(defaultRobot);
 
   const setCoord = useCallback((input: string, key: string) => {
     const updatedRobot = {
@@ -86,6 +87,11 @@ function RobotForm(props: RobotFormProps) {
     labelClassName: "flex-1 font-bold text-brand-brown-400",
     inputWrapperClassName: "flex-[2]",
   };
+
+  const saveRobotForm = useCallback((robot: Robot) => {
+    saveRobot(robot);
+    setRobot(defaultRobot);
+  }, [saveRobot, robot]);
 
   return (
     <div className="flex flex-col gap-4 w-full md:w-2/5 p-8 rounded-md shadow-lg bg-brand-brown-100">
@@ -123,9 +129,7 @@ function RobotForm(props: RobotFormProps) {
       <Button
         label="Save your Robot"
         classNames={{ buttonWrapperClassName: "self-center mt-auto w-full md:w-auto" }}
-        onClick={() => {
-          saveRobot(robot);
-        }}
+        onClick={() => saveRobotForm(robot)}
         disabled={!isValidRobotCallback()}
       />
     </div>
