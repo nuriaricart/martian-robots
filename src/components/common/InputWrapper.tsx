@@ -22,9 +22,19 @@ function InputWrapper (props: InputWrapperProps) {
     const {labelText, value, type, classNames, keyValue, setValue, name, checked, helperText} = props;
     return (
         <label className={c("flex gap-2", classNames?.labelWrapperClassName)}>
-            <span className={c(classNames?.labelClassName)}>{labelText}</span>
-            <input name={name} type={type} value={value as string} onChange={e => setValue(e.target.value, keyValue)} min="0" checked={checked} className={c({"bg-gray-200 appearance-none border-2 border-gray-200 rounded py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500": type != "radio"}, classNames?.inputClassName)}></input>
-            {helperText && <div className="italic text-xs text-gray-400">{helperText}</div>}
+            <div className={c(classNames?.labelClassName)}>{labelText}</div>
+            <div className="flex flex-col flex-[2] gap-2">
+                <input
+                    name={name}
+                    type={type}
+                    value={value as string}
+                    onChange={e => setValue(e.target.value, keyValue)}
+                    min="0"
+                    checked={checked}
+                    className={c({"bg-zinc-100 appearance-none border border-text-brand-brown-400 rounded py-2 px-4 text-brand-brown-400 leading-tight": type != "radio"}, classNames?.inputClassName)}
+                />
+                {helperText && <div className="italic text-xs text-brand-brown-400">{helperText}</div>}
+            </div>
         </label>
     )
 };

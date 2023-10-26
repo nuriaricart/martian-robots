@@ -3,6 +3,7 @@ import { Coordinate, MoveEnumType, Robot as RobotType } from "../types/entityTyp
 import Button from "./common/Button";
 import Robot from "./Robot";
 import { checkWithinBounds, equalRobots, getFutureRobot } from "../utils/helpers";
+import c from "classnames";
 
 type RobotsProps = {
     robots: RobotType[];
@@ -62,16 +63,16 @@ function Robots(props: RobotsProps) {
 
     return (
         <Fragment>
-            <div className="flex flex-col gap-4 w-full md:w-3/5 p-8 rounded-md shadow-md">
-                <h2 className="text-lg font-bold">ROBOT DATA</h2>
+            <div className="flex flex-col gap-4 w-full md:w-3/5 p-8 rounded-md shadow-lg bg-brand-brown-200">
+                <h2 className="text-2xl font-bold text-brand-brown-400 border-b border-brand-brown-400">ROBOT DATA</h2>
                 {(robots.length > 0) && (
-                    <div className="flex flex-col gap-4 flex-1">
+                    <div className={c("flex flex-col gap-4 flex-1 overflow-y-auto scroll-px-4 max-h-[410px]", {"md:pr-4": robots.length > 7, "pr-4 md:pr-0": robots.length > 5})}>
                         {robots.map((robot, index) => <Robot robot={robot} key={index} />)}
                     </div>
                 )}
                 
-                <div className="flex gap-4 justify-center mt-auto">
-                    <Button label="Clear your robots" onClick={clearRobots} disabled={isButtonDisabled()} />
+                <div className="flex gap-4 justify-center mt-auto flex-col md:flex-row">
+                    <Button label="Clear your robots" onClick={clearRobots} disabled={isButtonDisabled()} isPrimaryButton={false} />
                     <Button label="Calculate your destinations" onClick={calculateFinalDestinations} disabled={isButtonDisabled()} />
                 </div>
             </div>

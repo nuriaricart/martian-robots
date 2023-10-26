@@ -38,9 +38,9 @@ export function equalRobots(robot1: Robot, robot2: Robot): boolean {
 }
 
 export function isValidRobot(gridSize: Coordinate, robot: Robot) {
-    return Number(robot.coord.x) >= 0 && Number(robot.coord.y) >= 0 && robot.orientation && isValidPath(robot.path) && checkWithinBounds(gridSize, robot.coord);
+    return robot.coord.x && Number(robot.coord.x) >= 0 && robot.coord.y && Number(robot.coord.y) >= 0 && robot.orientation && isValidPath(robot.path) && checkWithinBounds(gridSize, robot.coord);
 }
 
 export function isValidPath(path: string): boolean {
-    return path.toUpperCase().split('').filter(move => !(move in MoveEnum)).length == 0;
+    return path.length > 0 && path.toUpperCase().split('').filter(move => !(move in MoveEnum)).length == 0;
 }

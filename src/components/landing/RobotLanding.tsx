@@ -5,6 +5,7 @@ import Container from "../common/Container";
 import RobotForm from "../forms/RobotForm";
 import Button from "../common/Button";
 import { checkWithinBounds } from "../../utils/helpers";
+import ArrowIcon from "../common/ArrowIcon";
 
 type RobotLandingProps = {
     gridSize: Coordinate;
@@ -34,10 +35,14 @@ function RobotLanding(props: RobotLandingProps) {
     const goBack = useCallback(() => {setIsRobotForm(false)}, [setIsRobotForm]);
 
     return (
-        <Container className="flex-col justify-center">
-            <div className="w-full flex items-center gap-8">
-                <Button label="Go back" onClick={goBack} className="self-start min-w-[150px]" />
-                <div className="justify-center">Size of Mars | X: {gridSize.x} Y: {gridSize.y}</div>
+        <Container className="flex-col justify-center gap-4">
+            <div className="w-full flex gap-4 md:gap-8 items-center">
+                <div className="md:w-2/5">
+                    <Button label="Go back" onClick={goBack} classNames={{buttonWrapperClassName: "self-start md:min-w-[150px]", labelClassName: "hidden md:block"}} isPrimaryButton={false}>
+                        <ArrowIcon className="rotate-180" />
+                    </Button>
+                </div>
+                <div className="text-2xl font-bold text-brand-brown-400 justify-center text-center md:text-left md:w-3/5">Size of Mars | X: {gridSize.x} Y: {gridSize.y}</div>
             </div>
             <div className="max-h-[65%] flex flex-col md:flex-row gap-8 w-full h-full">
                 <RobotForm saveRobot={saveRobot} gridSize={gridSize} />
