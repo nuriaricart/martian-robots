@@ -1,22 +1,9 @@
 import classNames from 'classnames';
-import {Coordinate, OrientationEnumType, Robot as RobotType} from  '../types/entityTypes';
+import {Robot as RobotType} from  '../types/entityTypes';
+import RobotInfo from './RobotInfo';
 
 type RobotProps = {
     robot: RobotType;
-}
-
-const RobotInfo = (props: {coord: Coordinate, orientation: OrientationEnumType, path?: string, isDisplayLabels?: boolean, isLost?: boolean, className?: string}) => {
-    const {coord, orientation, path, isDisplayLabels, isLost, className} = props;
-    return (
-        <div className={classNames("flex gap-4 flex-wrap", className)}>
-            <div className="flex gap-2">{isDisplayLabels && <div className="font-bold text-brand-brown-400">X:</div>}{coord.x}</div>
-            <div className="flex gap-2">{isDisplayLabels && <div className="font-bold text-brand-brown-400">Y:</div>}{coord.y}</div>
-            <div className="flex gap-2">{isDisplayLabels && <div className="font-bold text-brand-brown-400">O:</div>}{orientation}</div>
-            {path && <div className="flex gap-2">
-                {isDisplayLabels && <div className="font-bold text-brand-brown-400">P: </div>}{path}</div>}
-            {isLost && <div>LOST</div>}
-        </div>
-    )
 }
 
 function Robot(props: RobotProps) {

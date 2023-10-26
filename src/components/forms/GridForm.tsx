@@ -10,15 +10,26 @@ type FormProps = {
     setIsRobotForm: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
+const CoordinateInput = (props: {gridCoord: Coordinate, setGridCoord: React.Dispatch<React.SetStateAction<Coordinate>>, keyValue: string}) => {
+    const {gridCoord, setGridCoord, keyValue} = props;
+    return (
+        <InputWrapper 
+            labelText="Horizontal Coordinate" 
+            value={gridCoord.x} 
+            type="number" 
+            keyValue={keyValue}
+            setValue={(input, key) => {setGridCoord({...gridCoord, [key]: input})}} 
+            classNames={{labelWrapperClassName: "flex-col flex-1", labelClassName: "text-brand-brown-400 font-bold", inputWrapperClassName: "w-full"}}
+            helperText="Positive numbers only"
+        />
+    );
+}
+
 function GridForm(props: FormProps) {
     const {gridCoord, setGridCoord, setIsRobotForm} = props;
-    const [errors, setErrors] = useState("");
 
-    const submitCoord = () => {
-        if(!gridCoord.x && !gridCoord.y) setErrors("Missing values for both coordinates");
-        else if(!gridCoord.x) setErrors("Missing values for horizontal coordinate");
-        else if(!gridCoord.y) setErrors("Missing values for vertical coordinate");
-        else setIsRobotForm(true);
+    const submitGrid = () => {
+        setIsRobotForm(true);
     };
 
     const isValidForm = useCallback(() => {
@@ -27,33 +38,16 @@ function GridForm(props: FormProps) {
 
     return (
         <Container className="justify-center">
-            <div className="flex flex-col gap-4 items-center">
-                <h1 className="font-bold text-center">What's the dimension of your Mars grid?</h1>
-                <div className="flex flex-col sm:flex-row gap-8">
-                    <InputWrapper 
-                        labelText="Horizontal Coordinate" 
-                        value={gridCoord.x} 
-                        type="number" 
-                        keyValue="x" 
-                        setValue={(input, key) => {setGridCoord({...gridCoord, [key]: input})}} 
-                        classNames={{labelWrapperClassName: "flex-col items-start"}}
-                        helperText="Positive numbers only"
-                    />
-                    <InputWrapper 
-                        labelText="Vertical Coordinate"
-                        value={gridCoord.y}
-                        type="number"
-                        keyValue="y"
-                        setValue={(input, key) => {setGridCoord({...gridCoord, [key]: input})}}
-                        classNames={{labelWrapperClassName: "flex-col"}}
-                        helperText="Positive numbers only"
-                    />
+            <div className="flex flex-col gap-8 items-center p-16 bg-brand-brown-100 rounded-lg shadow-lg">
+                <h1 className="text-3xl font-bold text-center text-brand-brown-400">What's the dimension of your Mars grid?</h1>
+                <div className="w-full flex flex-col sm:flex-row gap-8 justify-between">
+                    <CoordinateInput gridCoord={gridCoord} setGridCoord={setGridCoord} keyValue="x" />
+                    <CoordinateInput gridCoord={gridCoord} setGridCoord={setGridCoord} keyValue="y" />
                 </div>
-                <Button label="Go to Mars!!" onClick={submitCoord} disabled={!isValidForm()} />
-                {errors && (<div>{errors}</div>)}
+                <Button label="Go to Mars!!" onClick={submitGrid} disabled={!isValidForm()} />
             </div>
         </Container>
-    )
+    );
 }
 
 export default GridForm;

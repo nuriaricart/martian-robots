@@ -11,19 +11,19 @@ type InputWrapperProps = {
     classNames?: {
         labelWrapperClassName?: string;
         labelClassName?: string;
+        inputWrapperClassName?: string;
         inputClassName?: string;
     };
     checked?: boolean;
     helperText?: string;
 }
 
-// TODO prevent user from entering negative numbers
 function InputWrapper (props: InputWrapperProps) {
     const {labelText, value, type, classNames, keyValue, setValue, name, checked, helperText} = props;
     return (
         <label className={c("flex gap-2", classNames?.labelWrapperClassName)}>
             <div className={c(classNames?.labelClassName)}>{labelText}</div>
-            <div className="flex flex-col flex-[2] gap-2">
+            <div className={c("flex flex-col gap-2", classNames?.inputWrapperClassName)}>
                 <input
                     name={name}
                     type={type}
