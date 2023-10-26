@@ -2,7 +2,7 @@ import { Fragment, useCallback } from "react";
 import { Coordinate, MoveEnumType, Robot as RobotType } from "../types/entityTypes";
 import Button from "./common/Button";
 import Robot from "./Robot";
-import { checkWithinBounds, equalRobots, getNextPosition, updateOrientation } from "../utils/helpers";
+import { checkWithinBounds, equalRobots, getFutureRobot } from "../utils/helpers";
 
 type RobotsProps = {
     robots: RobotType[];
@@ -29,8 +29,7 @@ function Robots(props: RobotsProps) {
              const pathArray: string[] = path.toUpperCase().split('');            
              let futureRobot = {...robot};
          for(const move of pathArray) {
-             const moveValue = move as MoveEnumType;
-             const possibleFutureRobot = ["R", "L"].includes(moveValue) ? {...futureRobot, orientation: updateOrientation(futureRobot.orientation, moveValue)} : {...futureRobot, coord: getNextPosition(futureRobot)};
+             const possibleFutureRobot = getFutureRobot(futureRobot, move as MoveEnumType);
              const isInBounds = checkWithinBounds(gridSize, possibleFutureRobot.coord);
  
              if(!isInBounds && !checkInScentPaths(futureRobot, scentPaths)) {
@@ -73,7 +72,7 @@ function Robots(props: RobotsProps) {
                 
                 <div className="flex gap-4 justify-center mt-auto">
                     <Button label="Clear your robots" onClick={clearRobots} disabled={isButtonDisabled()} />
-                    <Button label="Trigger your robots" onClick={calculateFinalDestinations} disabled={isButtonDisabled()} />
+                    <Button label="Calculate your destinations" onClick={calculateFinalDestinations} disabled={isButtonDisabled()} />
                 </div>
             </div>
         </Fragment>

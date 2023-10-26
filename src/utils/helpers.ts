@@ -1,4 +1,16 @@
-import { Coordinate, MoveEnumType, OrientationEnum, OrientationEnumType, Robot } from "../types/entityTypes";
+import { Coordinate, MoveEnum, MoveEnumType, OrientationEnum, OrientationEnumType, Robot } from "../types/entityTypes";
+
+export function getFutureRobot(robot: Robot, move: MoveEnumType): Robot {
+    switch(move) {
+        case 'F':
+            return {...robot, coord: getNextPosition(robot)};
+        case 'L':
+        case 'R':
+            return {...robot, orientation: updateOrientation(robot.orientation, move)};
+        default:
+            return robot;
+    }
+}
 
 export function getNextPosition(robot: Robot): Coordinate {
     const robotCoord = robot.coord;
@@ -26,5 +38,9 @@ export function equalRobots(robot1: Robot, robot2: Robot): boolean {
 }
 
 export function isValidRobot(gridSize: Coordinate, robot: Robot) {
-    return Number(robot.coord.x) >= 0 && Number(robot.coord.y) >= 0 && robot.orientation && robot.path && checkWithinBounds(gridSize, robot.coord);
+    return Number(robot.coord.x) >= 0 && Number(robot.coord.y) >= 0 && robot.orientation && isValidPath(robot.path) && checkWithinBounds(gridSize, robot.coord);
+}
+
+export function isValidPath(path: string): boolean {
+    return path.toUpperCase().split('').filter(move => !(move in MoveEnum)).length == 0;
 }
