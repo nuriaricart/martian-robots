@@ -15,11 +15,12 @@ const CoordinateInput = (props: {
   gridCoord: Coordinate;
   setGridCoord: React.Dispatch<React.SetStateAction<Coordinate>>;
   keyValue: string;
+  labelText: string;
 }) => {
-  const { gridCoord, setGridCoord, keyValue } = props;
+  const { gridCoord, setGridCoord, keyValue, labelText } = props;
   return (
     <InputWrapper
-      labelText="Horizontal Coordinate"
+      labelText={labelText}
       value={gridCoord[keyValue]}
       type="number"
       keyValue={keyValue}
@@ -58,11 +59,13 @@ function GridForm(props: FormProps) {
             gridCoord={gridCoord}
             setGridCoord={setGridCoord}
             keyValue="x"
+            labelText="Horizontal Coordinate"
           />
           <CoordinateInput
             gridCoord={gridCoord}
             setGridCoord={setGridCoord}
             keyValue="y"
+            labelText="Vertical Coordinate"
           />
         </div>
         <Button
