@@ -71,8 +71,8 @@ export function equalRobots(robot1: Robot, robot2: Robot): boolean {
 
 export function isValidRobot(gridSize: Coordinate, robot: Robot) {
   return (
-    robot.coord.x && Number(robot.coord.x) >= 0 &&
-    robot.coord.y && Number(robot.coord.y) >= 0 &&
+    isValidCord(robot.coord.x) &&
+    isValidCord(robot.coord.y) &&
     robot.orientation &&
     isValidPath(robot.path) &&
     checkWithinBounds(gridSize, robot.coord)
@@ -90,5 +90,11 @@ export function isValidPath(path: string): boolean {
 }
 
 export function isValidGrid (coord: Coordinate): boolean {
-  return Number(coord.x) >= 0 && Number(coord.y) >= 0;
+  return isValidCord(coord.x) && isValidCord(coord.y);
+}
+
+function isValidCord(coord: string): boolean {
+  if (!coord) return false;
+  const coordNum = Number(coord);
+  return Number.isInteger(coordNum) && coordNum >= 0;
 }
