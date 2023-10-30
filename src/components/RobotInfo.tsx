@@ -18,11 +18,11 @@ function RobotInfo(props: RobotInfoProps) {
     <div className={c("flex gap-4 flex-wrap", className)}>
       <div className="flex gap-2">
         {isDisplayLabels && <div className={labelClassName}>X:</div>}
-        {coord.x}
+        {parseInt(coord.x)}
       </div>
       <div className="flex gap-2">
         {isDisplayLabels && <div className={labelClassName}>Y:</div>}
-        {coord.y}
+        {parseInt(coord.y)}
       </div>
       <div className="flex gap-2">
         {isDisplayLabels && <div className={labelClassName}>O:</div>}

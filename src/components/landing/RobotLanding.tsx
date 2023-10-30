@@ -62,7 +62,7 @@ function RobotLanding(props: RobotLandingProps) {
           </Button>
         </div>
         <h1 className="text-2xl font-bold text-brand-brown-400 justify-center text-center md:text-left md:w-3/5">
-          Size of Mars | X: {gridSize.x} Y: {gridSize.y}
+          Size of Mars | X:{parseInt(gridSize.x)} Y: {parseInt(gridSize.y)}
         </h1>
       </div>
       <div className="max-h-[65%] flex flex-col md:flex-row gap-8 w-full h-full">
